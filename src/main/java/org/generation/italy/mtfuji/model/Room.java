@@ -3,12 +3,7 @@ package org.generation.italy.mtfuji.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "room")
@@ -16,9 +11,13 @@ public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "max_occupancy")
     private Integer max_occupancy;
+    @Column(name = "luxury")
     private boolean luxury;
     @OneToMany(mappedBy = "room")
     private List<Booking> reservations = new ArrayList<>();

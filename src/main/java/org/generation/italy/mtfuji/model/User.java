@@ -3,12 +3,7 @@ package org.generation.italy.mtfuji.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -16,12 +11,19 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+    @Column(name = "firstname")
     private String firstname;
+    @Column(name = "lastname")
     private String lastname;
+    @Column(name = "age")
     private long age;
-    private String email; 
+    @Column(name = "email")
+    private String email;
+    @Column(name = "adress")
     private String address;
+    @Column(name = "fidelity_card")
     private boolean fidelity_card;
     @OneToMany(mappedBy = "user")
     private List<Booking> reservations = new ArrayList<>();    
