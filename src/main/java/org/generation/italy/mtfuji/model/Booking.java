@@ -1,4 +1,4 @@
-package org.generation.italy.nomeprogetto.model;
+package org.generation.italy.mtfuji.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

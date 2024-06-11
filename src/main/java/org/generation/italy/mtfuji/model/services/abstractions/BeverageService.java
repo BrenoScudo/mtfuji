@@ -1,9 +1,11 @@
-package org.generation.italy.nomeprogetto.model.services.abstractions;
+package org.generation.italy.mtfuji.model.services.abstractions;
+
+import org.generation.italy.mtfuji.model.Beverage;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.generation.italy.nomeprogetto.model.Beverage;
+
 
 public interface BeverageService {
 

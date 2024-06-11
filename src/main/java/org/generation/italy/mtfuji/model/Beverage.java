@@ -1,4 +1,4 @@
-package org.generation.italy.nomeprogetto.model;
+package org.generation.italy.mtfuji.model;
 
 import java.util.ArrayList;
 import java.util.List;

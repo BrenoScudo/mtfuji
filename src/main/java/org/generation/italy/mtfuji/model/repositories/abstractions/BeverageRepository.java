@@ -1,6 +1,7 @@
-package org.generation.italy.nomeprogetto.model.repositories.abstractions;
+package org.generation.italy.mtfuji.model.repositories.abstractions;
 
-import org.generation.italy.nomeprogetto.model.Beverage;
+
+import org.generation.italy.mtfuji.model.Beverage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,9 +1,10 @@
-package org.generation.italy.nomeprogetto.controllers;
+package org.generation.italy.mtfuji.controllers;
 
 import java.util.List;
 
-import org.generation.italy.nomeprogetto.model.Beverage;
-import org.generation.italy.nomeprogetto.model.repositories.abstractions.BeverageRepository;
+
+import org.generation.italy.mtfuji.model.Beverage;
+import org.generation.italy.mtfuji.model.services.abstractions.BeverageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.config.Task;
@@ -20,25 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class BeverageController {
 
     @Autowired
-    private BeverageRepository beverageRepository;
+    private BeverageService beverageService;
 
     //get all beverage
     @GetMapping("/all/beverages")
     public List<Beverage> getAllBeverages(){
-        return beverageRepository.findAll();
+        return beverageService.getAllBeverage();
     }
 
     //Put new beverage    
 	@PutMapping("/{id}")
-	public ResponseEntity<Task> updateBeverage(@PathVariable("id") long id, @RequestBody Beverage beverage) {
-		beverage.setId(id);
-		Task updatedBeverage = taskService.updateTask(beverage);
+	public ResponseEntity<Beverage> updateBeverage(@PathVariable("id") long id, @RequestBody Beverage beverage) {
+		Beverage updatedBeverage = beverageService.updateBeverage(beverage);
 		return ResponseEntity.ok(updatedBeverage);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteBeverageById(@PathVariable("id") long id) {
-		taskService.deleteBeverageById(id);
+		beverageService.deleteBeverageById(id);
 		return ResponseEntity.noContent().build();
 	}
 

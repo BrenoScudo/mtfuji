@@ -1,4 +1,4 @@
-package org.generation.italy.nomeprogetto.model;
+package org.generation.italy.mtfuji.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
