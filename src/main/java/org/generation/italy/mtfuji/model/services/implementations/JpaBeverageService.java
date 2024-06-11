@@ -1,7 +1,9 @@
 package org.generation.italy.mtfuji.model.services.implementations;
 
 import org.generation.italy.mtfuji.model.Beverage;
+import org.generation.italy.mtfuji.model.repositories.abstractions.BeverageRepository;
 import org.generation.italy.mtfuji.model.services.abstractions.BeverageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,29 +11,22 @@ import java.util.Optional;
 
 @Service
 public class JpaBeverageService implements BeverageService {
-    @Override
-    public Beverage createBeverage(Beverage beverage) {
-        return null;
+
+    private final BeverageRepository beverageRepository;
+
+    @Autowired
+    public JpaBeverageService(BeverageRepository beverageRepository) {
+        this.beverageRepository = beverageRepository;
     }
 
     @Override
     public List<Beverage> getAllBeverage() {
-        return List.of();
+        return beverageRepository.findAll();
     }
 
     @Override
     public Optional<Beverage> getBeverageById(long id) {
         return Optional.empty();
-    }
-
-    @Override
-    public Beverage updateBeverage(Beverage beverage) {
-        return null;
-    }
-
-    @Override
-    public void deleteBeverageById(long id) {
-
     }
 
     @Override
