@@ -16,14 +16,21 @@ import jakarta.persistence.Table;
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+    @Column(name = "name")
     private String name;
-    @Column(columnDefinition = "Numeric")
+    @Column(name = "cost", columnDefinition = "Numeric")
     private float cost;
+    @Column(name = "type")
     private String type;
+    @Column(name = "complimentary")
     private boolean complimentary;
+    @Column(name = "vegan")
     private boolean vegan;
+    @Column(name = "gluten_free")
     private boolean gluten_free;
+    @Column(name = "description")
     private String description;
     @OneToMany(mappedBy = "food")
     private List<Orders> orders = new ArrayList<>();

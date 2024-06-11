@@ -1,19 +1,19 @@
 package org.generation.italy.mtfuji.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "karaoke")
 public class Karaoke {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "genre")
     private String genre;
+    @Column(name = "singer")
     private String singer;
 
     public Karaoke() {
