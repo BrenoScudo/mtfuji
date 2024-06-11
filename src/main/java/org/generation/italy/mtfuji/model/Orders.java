@@ -1,18 +1,13 @@
 package org.generation.italy.mtfuji.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "orders")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
     @ManyToOne
     @JoinColumn(name = "id_booking")
@@ -23,6 +18,7 @@ public class Orders {
     @ManyToOne
     @JoinColumn(name = "id_beverage")
     private Beverage beverage;
+    @Column(name = "quantity")
     private long quantity;
    
     public Orders() {
