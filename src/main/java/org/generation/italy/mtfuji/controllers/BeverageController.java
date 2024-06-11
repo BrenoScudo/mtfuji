@@ -17,29 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/beverage")
+@RequestMapping("/beverages")
 public class BeverageController {
+	private final BeverageService beverageService;
 
-    @Autowired
-    private BeverageService beverageService;
+	@Autowired
+	public BeverageController(BeverageService beverageService) {
+		this.beverageService = beverageService;
+	}
 
-    //get all beverage
-    @GetMapping("/all/beverages")
+	//get all beverage
+    @GetMapping
     public List<Beverage> getAllBeverages(){
         return beverageService.getAllBeverage();
     }
-
-    //Put new beverage    
-	@PutMapping("/{id}")
-	public ResponseEntity<Beverage> updateBeverage(@PathVariable("id") long id, @RequestBody Beverage beverage) {
-		Beverage updatedBeverage = beverageService.updateBeverage(beverage);
-		return ResponseEntity.ok(updatedBeverage);
-	}
-
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteBeverageById(@PathVariable("id") long id) {
-		beverageService.deleteBeverageById(id);
-		return ResponseEntity.noContent().build();
-	}
 
 }

@@ -17,12 +17,17 @@ public class Beverage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+    @Column(name = "name")
     private String name;
-    @Column(columnDefinition = "Numeric")
+    @Column(name = "cost", columnDefinition = "Numeric")
     private float cost;
+    @Column(name = "complimentary")
     private boolean complimentary;
+    @Column(name = "description")
     private String description;
+    @Column(name = "alcoholic")
     private boolean alcoholic;
     @OneToMany(mappedBy = "beverage")
     private List<Orders> orders = new ArrayList<>();
