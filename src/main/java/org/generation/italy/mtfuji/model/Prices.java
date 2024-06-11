@@ -15,12 +15,14 @@ public class Prices {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
     @ManyToOne
     @JoinColumn(name = "id_room")
     private Room room;
-    @Column(columnDefinition = "Numeric")
+    @Column(name = "cost", columnDefinition = "Numeric")
     private float cost;
+    @Column(name = "num_people")
     private Integer num_people;
     
     public Prices() {
