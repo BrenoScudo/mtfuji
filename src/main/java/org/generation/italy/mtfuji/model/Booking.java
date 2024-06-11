@@ -19,23 +19,27 @@ import jakarta.persistence.Table;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
+    @Column(name = "quantity")
     private long quantity;
-    @Column(columnDefinition = "timestamp")
+    @Column(name = "check_in", columnDefinition = "timestamp")
     private LocalDate check_in;
-    @Column(columnDefinition = "timestamp")
+    @Column(name = "check_out", columnDefinition = "timestamp")
     private LocalDate check_out;
-    @Column(columnDefinition = "timestamp")
+    @Column(name = "reservation_date", columnDefinition = "timestamp")
     private LocalDate reservation_date;
     @ManyToOne
     @JoinColumn(name = "id_room")
     private Room room;
+    @Column(name = "paid")
     private boolean paid;
-    @Column(columnDefinition = "Numeric")
+    @Column(name = "cost", columnDefinition = "Numeric")
     private float cost;
+    @Column(name = "is_promotion")
     private boolean is_promotion;
     @OneToMany(mappedBy = "booking")
     private List<Orders> orders = new ArrayList<>();
