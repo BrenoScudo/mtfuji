@@ -1,13 +1,14 @@
 package org.generation.italy.mtfuji.dto;
 
 import org.generation.italy.mtfuji.model.Food;
+import org.generation.italy.mtfuji.model.FoodType;
 
 public class FoodDTO {
 
     private long id;
     private String name;
     private float cost;
-    private String typeOfFood;
+    private FoodType typeOfFood;
     private boolean complimentary;
     private String description;
     private boolean isVegan;
@@ -39,7 +40,7 @@ public class FoodDTO {
         return cost;
     }
 
-    public String getTypeOfFood() {
+    public FoodType getTypeOfFood() {
         return typeOfFood;
     }
 
@@ -75,7 +76,7 @@ public class FoodDTO {
         this.cost = cost;
     }
 
-    public void setTypeOfFood(String typeOfFood) {
+    public void setTypeOfFood(FoodType typeOfFood) {
         this.typeOfFood = typeOfFood;
     }
 

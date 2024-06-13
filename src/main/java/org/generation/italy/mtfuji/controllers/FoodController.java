@@ -1,8 +1,10 @@
 package org.generation.italy.mtfuji.controllers;
 
 import org.generation.italy.mtfuji.dto.FoodDTO;
+import org.generation.italy.mtfuji.dto.GeneralMenuDTO;
 import org.generation.italy.mtfuji.model.Beverage;
 import org.generation.italy.mtfuji.model.Food;
+import org.generation.italy.mtfuji.model.GeneralMenu;
 import org.generation.italy.mtfuji.model.services.abstractions.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,21 +30,8 @@ public class FoodController {
     //get all beverage
     @GetMapping
     public ResponseEntity<List<FoodDTO>> getAllFoods(){
-        List<FoodDTO> foodsDto = foodService.getAllFood().stream().map(this::convertToDto).collect(Collectors.toList());
+        List<FoodDTO> foodsDto = foodService.getAllFood().stream().map(FoodDTO::new).collect(Collectors.toList());
         return ResponseEntity.ok(foodsDto);
-    }
-
-    public FoodDTO convertToDto(Food food) {
-        FoodDTO dto = new FoodDTO();
-        dto.setId(food.getId());
-        dto.setName(food.getName());
-        dto.setCost(food.getCost());
-        dto.setDescription(food.getDescription());
-        dto.setGlutenFree(food.isGlutenFree());
-        dto.setVegan(food.isVegan());
-        dto.setComplimentary(food.isComplimentary());
-        dto.setTypeOfFood(food.getType());
-        return dto;
     }
 
     @GetMapping("/{id}")
@@ -54,5 +43,12 @@ public class FoodController {
         Food f = ofood.get();
         FoodDTO dto = new FoodDTO(f);
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/menu")
+    public ResponseEntity<GeneralMenuDTO> getGeneralMenu(){
+        GeneralMenu gm = foodService.getGeneralMenu();
+        GeneralMenuDTO generalMenuDTO = new GeneralMenuDTO(gm);
+        return ResponseEntity.ok(generalMenuDTO);
     }
 }

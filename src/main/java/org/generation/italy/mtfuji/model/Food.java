@@ -3,13 +3,7 @@ package org.generation.italy.mtfuji.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "food")
@@ -23,7 +17,8 @@ public class Food {
     @Column(name = "cost", columnDefinition = "Numeric")
     private float cost;
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private FoodType type;
     @Column(name = "complimentary")
     private boolean complimentary;
     @Column(name = "vegan")
@@ -38,7 +33,7 @@ public class Food {
     public Food() {
     }
     
-    public Food(long id, String name, float cost, String type, boolean complimentary, boolean vegan,
+    public Food(long id, String name, float cost, FoodType type, boolean complimentary, boolean vegan,
                 boolean glutenFree, String description) {
         this.id = id;
         this.name = name;
@@ -50,7 +45,7 @@ public class Food {
         this.description = description;
     }
 
-    public Food(String name, float cost, String typeOfFood, boolean complimentary, boolean isVegan, boolean isGlutenFree, String description) {
+    public Food(String name, float cost, FoodType typeOfFood, boolean complimentary, boolean isVegan, boolean isGlutenFree, String description) {
     }
 
     public List<Orders> getOrders() {
@@ -85,11 +80,11 @@ public class Food {
         this.cost = cost;
     }
 
-    public String getType() {
+    public FoodType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(FoodType type) {
         this.type = type;
     }
 

@@ -2,11 +2,12 @@ package org.generation.italy.mtfuji.model.services.implementations;
 
 import org.generation.italy.mtfuji.model.Room;
 import org.generation.italy.mtfuji.model.services.abstractions.RoomService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class JpaRoomService implements RoomService {
-
 
     @Override
     public List<Room> getAllRooms() {
