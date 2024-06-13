@@ -26,7 +26,7 @@ public class JpaBeverageService implements BeverageService {
 
     @Override
     public Optional<Beverage> getBeverageById(long id) {
-        return Optional.empty();
+        return beverageRepository.findById(id);
     }
 
     @Override

@@ -44,6 +44,9 @@ public class Beverage {
         this.alcoholic = alcoholic;
     }
 
+    public Beverage(String name, String description, boolean complimentary, boolean isAlcoholic, float cost) {
+    }
+
     public List<Orders> getListOrders() {
         return orders;
     }

@@ -26,7 +26,7 @@ public class JpaKaraokeService implements KaraokeService {
 
     @Override
     public Optional<Karaoke> getKaraokeById(long id) {
-        return Optional.empty();
+        return karaokeRepository.findById(id);
     }
 
     @Override

@@ -27,7 +27,7 @@ public class JpaFilmService implements FilmService {
 
     @Override
     public Optional<Film> getFilmById(long id) {
-        return Optional.empty();
+        return filmRepository.findById(id);
     }
 
     @Override

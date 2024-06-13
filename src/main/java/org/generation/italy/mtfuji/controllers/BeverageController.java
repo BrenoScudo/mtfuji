@@ -32,4 +32,6 @@ public class BeverageController {
         return beverageService.getAllBeverage();
     }
 
+
+
 }

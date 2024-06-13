@@ -5,30 +5,16 @@ import org.generation.italy.mtfuji.model.Food;
 
 import java.io.Serializable;
 
-public class CateringDTO implements Serializable {
+public class BeverageDTO implements Serializable {
 
     private long id;
     private String name;
     private float cost;
-    private String typeOfFood;
     private boolean complimentary;
     private String description;
-    private boolean isVegan;
-    private boolean isGlutenFree;
     private boolean isAlcoholic;
 
-    public CateringDTO(Food food){
-        this.id = food.getId();
-        this.name = food.getName();
-        this.cost = food.getCost();
-        this.description = food.getDescription();
-        this.typeOfFood = food.getType();
-        this.isVegan = food.isVegan();
-        this.isGlutenFree = food.isGluten_free();
-        this.complimentary = food.isComplimentary();
-    }
-
-    public CateringDTO(Beverage beverage){
+    public BeverageDTO(Beverage beverage){
         this.id = beverage.getId();
         this.name = beverage.getName();
         this.description = beverage.getDescription();
@@ -37,7 +23,7 @@ public class CateringDTO implements Serializable {
         this.complimentary = beverage.isComplimentary();
     }
 
-    public CateringDTO(){
+    public BeverageDTO(){
 
     }
 
@@ -53,10 +39,6 @@ public class CateringDTO implements Serializable {
         return cost;
     }
 
-    public String getTypeOfFood() {
-        return typeOfFood;
-    }
-
     public boolean isComplimentary() {
         return complimentary;
     }
@@ -65,15 +47,11 @@ public class CateringDTO implements Serializable {
         return description;
     }
 
-    public boolean isVegan() {
-        return isVegan;
-    }
-
-    public boolean isGlutenFree() {
-        return isGlutenFree;
-    }
-
     public boolean isAlcoholic() {
         return isAlcoholic;
+    }
+
+    public Beverage toBeverage(){
+        return new Beverage(this.name, this.description, this.complimentary, this.isAlcoholic, this.cost);
     }
 }

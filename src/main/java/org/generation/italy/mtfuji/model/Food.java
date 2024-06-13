@@ -29,7 +29,7 @@ public class Food {
     @Column(name = "vegan")
     private boolean vegan;
     @Column(name = "gluten_free")
-    private boolean gluten_free;
+    private boolean glutenFree;
     @Column(name = "description")
     private String description;
     @OneToMany(mappedBy = "food")
@@ -39,15 +39,18 @@ public class Food {
     }
     
     public Food(long id, String name, float cost, String type, boolean complimentary, boolean vegan,
-            boolean gluten_free, String description) {
+                boolean glutenFree, String description) {
         this.id = id;
         this.name = name;
         this.cost = cost;
         this.type = type;
         this.complimentary = complimentary;
         this.vegan = vegan;
-        this.gluten_free = gluten_free;
+        this.glutenFree = glutenFree;
         this.description = description;
+    }
+
+    public Food(String name, float cost, String typeOfFood, boolean complimentary, boolean isVegan, boolean isGlutenFree, String description) {
     }
 
     public List<Orders> getOrders() {
@@ -106,12 +109,12 @@ public class Food {
         this.vegan = vegan;
     }
 
-    public boolean isGluten_free() {
-        return gluten_free;
+    public boolean isGlutenFree() {
+        return glutenFree;
     }
 
-    public void setGluten_free(boolean gluten_free) {
-        this.gluten_free = gluten_free;
+    public void setGlutenFree(boolean glutenFree) {
+        this.glutenFree = glutenFree;
     }
 
     public String getDescription() {
