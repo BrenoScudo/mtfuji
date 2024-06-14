@@ -29,12 +29,14 @@ public class Food {
     private String description;
     @OneToMany(mappedBy = "food")
     private List<Orders> orders = new ArrayList<>();
+    @Column(name = "image_name")
+    private String imageName;
 
     public Food() {
     }
     
     public Food(long id, String name, float cost, FoodType type, boolean complimentary, boolean vegan,
-                boolean glutenFree, String description) {
+                boolean glutenFree, String description, String imageName) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -43,12 +45,10 @@ public class Food {
         this.vegan = vegan;
         this.glutenFree = glutenFree;
         this.description = description;
+        this.imageName = imageName;
     }
 
     public Food(String name, float cost, FoodType typeOfFood, boolean complimentary, boolean isVegan, boolean isGlutenFree, String description) {
-    }
-
-    public Food(long l, String pizza, String deliciousPizza) {
     }
 
     public List<Orders> getOrders() {
@@ -61,6 +61,10 @@ public class Food {
 
     public long getId() {
         return id;
+    }
+
+    public String getImageName() {
+        return imageName;
     }
 
     public void setId(long id) {
