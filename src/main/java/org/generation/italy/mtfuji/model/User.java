@@ -25,6 +25,8 @@ public class User {
     private String address;
     @Column(name = "fidelity_card")
     private boolean fidelity_card;
+    @Column(name = "password")
+    private String password;
     @OneToMany(mappedBy = "user")
     private List<Booking> reservations = new ArrayList<>();    
 
@@ -93,5 +95,11 @@ public class User {
         this.fidelity_card = fidelity_card;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
