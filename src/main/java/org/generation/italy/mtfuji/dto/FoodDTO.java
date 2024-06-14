@@ -13,6 +13,7 @@ public class FoodDTO {
     private String description;
     private boolean isVegan;
     private boolean isGlutenFree;
+    private String imageName;
 
     public FoodDTO() {
     }
@@ -26,6 +27,7 @@ public class FoodDTO {
         this.description = food.getDescription();
         this.isVegan = food.isVegan();
         this.isGlutenFree = food.isGlutenFree();
+        this.imageName = food.getImageName();
     }
 
     public long getId() {
@@ -58,6 +60,10 @@ public class FoodDTO {
 
     public boolean isGlutenFree() {
         return isGlutenFree;
+    }
+
+    public String getImageName() {
+        return imageName;
     }
 
     public Food toFood(){

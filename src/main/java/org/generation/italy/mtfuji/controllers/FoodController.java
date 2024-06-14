@@ -51,10 +51,5 @@ public class FoodController {
 //        return ResponseEntity.ok(dto);
     }
 
-    @GetMapping("/menu")
-    public ResponseEntity<GeneralMenuDTO> getGeneralMenu(){
-        GeneralMenu gm = foodService.getGeneralMenu();
-        GeneralMenuDTO generalMenuDTO = new GeneralMenuDTO(gm);
-        return ResponseEntity.ok(generalMenuDTO);
-    }
+
 }
