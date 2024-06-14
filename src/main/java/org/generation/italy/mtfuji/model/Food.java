@@ -48,6 +48,9 @@ public class Food {
     public Food(String name, float cost, FoodType typeOfFood, boolean complimentary, boolean isVegan, boolean isGlutenFree, String description) {
     }
 
+    public Food(long l, String pizza, String deliciousPizza) {
+    }
+
     public List<Orders> getOrders() {
         return orders;
     }
