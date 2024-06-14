@@ -42,6 +42,5 @@ public class UserController {
             return jwtService.generateToken(user.getEmail());
         else
             return "Login Failed";
-
     }
 }

@@ -33,9 +33,8 @@ public class User {
     public User() {
     }
 
-    public User(long id, String firstname, String lastname, long age, String email, String address,
+    public User(String firstname, String lastname, long age, String email, String address,
             boolean fidelity_card) {
-        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
