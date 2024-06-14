@@ -30,11 +30,6 @@ public class JpaKaraokeService implements KaraokeService {
     }
 
     @Override
-    public List<Karaoke> findByNameLike(String name) {
-        return List.of();
-    }
-
-    @Override
     public List<Karaoke> findByTitleLike(String titleLike) {
         return karaokeRepository.findByTitleContainingIgnoreCase(titleLike);
     }
