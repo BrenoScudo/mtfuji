@@ -1,10 +1,7 @@
 package org.generation.italy.mtfuji.controllers;
 
 import org.generation.italy.mtfuji.dto.FoodDTO;
-import org.generation.italy.mtfuji.dto.GeneralMenuDTO;
-import org.generation.italy.mtfuji.model.Beverage;
 import org.generation.italy.mtfuji.model.Food;
-import org.generation.italy.mtfuji.model.GeneralMenu;
 import org.generation.italy.mtfuji.model.services.abstractions.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

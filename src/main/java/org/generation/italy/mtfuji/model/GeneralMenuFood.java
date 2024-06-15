@@ -1,10 +1,10 @@
 package org.generation.italy.mtfuji.model;
 
-public class GeneralMenu {
+public class GeneralMenuFood {
 
-    private  Menu standardMenu = new Menu();
-    private  Menu celiacMenu = new Menu();
-    private  Menu veganMenu = new Menu();
+    private MenuFood standardMenu = new MenuFood();
+    private MenuFood celiacMenu = new MenuFood();
+    private MenuFood veganMenu = new MenuFood();
 
     public void addFood(Food food){
         standardMenu.addFood(food);
@@ -15,15 +15,15 @@ public class GeneralMenu {
         }
     }
 
-    public Menu getStandardMenu() {
+    public MenuFood getStandardMenu() {
         return standardMenu;
     }
 
-    public Menu getCeliacMenu() {
+    public MenuFood getCeliacMenu() {
         return celiacMenu;
     }
 
-    public Menu getVeganMenu() {
+    public MenuFood getVeganMenu() {
         return veganMenu;
     }
 }

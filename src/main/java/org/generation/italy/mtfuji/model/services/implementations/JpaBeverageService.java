@@ -1,6 +1,8 @@
 package org.generation.italy.mtfuji.model.services.implementations;
 
 import org.generation.italy.mtfuji.model.Beverage;
+import org.generation.italy.mtfuji.model.GeneralMenuBeverage;
+import org.generation.italy.mtfuji.model.GeneralMenuFood;
 import org.generation.italy.mtfuji.model.repositories.abstractions.BeverageRepository;
 import org.generation.italy.mtfuji.model.services.abstractions.BeverageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +34,13 @@ public class JpaBeverageService implements BeverageService {
     @Override
     public List<Beverage> findByNameLike(String name) {
         return List.of();
+    }
+
+    @Override
+    public GeneralMenuBeverage getGeneralMenu() {
+        List<Beverage> beverages = getAllBeverage();
+        GeneralMenuBeverage gm = new GeneralMenuBeverage();
+        beverages.stream().forEach(gm::addBeverage);
+        return gm;
     }
 }

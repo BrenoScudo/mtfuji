@@ -3,7 +3,7 @@ package org.generation.italy.mtfuji.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu {
+public class MenuFood {
 
     private List<Food> snacks = new ArrayList<>();
     private List<Food> sandwiches = new ArrayList<>();

@@ -1,7 +1,7 @@
 package org.generation.italy.mtfuji.controllers;
 
-import org.generation.italy.mtfuji.dto.GeneralMenuDTO;
-import org.generation.italy.mtfuji.model.GeneralMenu;
+import org.generation.italy.mtfuji.dto.GeneralMenuFoodDTO;
+import org.generation.italy.mtfuji.model.GeneralMenuFood;
 import org.generation.italy.mtfuji.model.services.abstractions.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/menu")
-public class MenuController {
+@RequestMapping("/food")
+public class MenuFoodController {
 
-    private final FoodService foodService;
+    private  final FoodService foodService;
 
     @Autowired
-    public MenuController(FoodService foodService) {
+    public MenuFoodController(FoodService foodService) {
         this.foodService = foodService;
     }
 
     @GetMapping
-    public ResponseEntity<GeneralMenuDTO> getGeneralMenu(){
-        GeneralMenu gm = foodService.getGeneralMenu();
-        GeneralMenuDTO generalMenuDTO = new GeneralMenuDTO(gm);
+    public ResponseEntity<GeneralMenuFoodDTO> getGeneralMenuFood(){
+        GeneralMenuFood gm = foodService.getGeneralMenu();
+        GeneralMenuFoodDTO generalMenuDTO = new GeneralMenuFoodDTO(gm);
         return ResponseEntity.ok(generalMenuDTO);
     }
 }

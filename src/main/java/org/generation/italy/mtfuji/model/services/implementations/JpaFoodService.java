@@ -1,8 +1,7 @@
 package org.generation.italy.mtfuji.model.services.implementations;
 
 import org.generation.italy.mtfuji.model.Food;
-import org.generation.italy.mtfuji.model.GeneralMenu;
-import org.generation.italy.mtfuji.model.repositories.abstractions.BeverageRepository;
+import org.generation.italy.mtfuji.model.GeneralMenuFood;
 import org.generation.italy.mtfuji.model.repositories.abstractions.FoodRepository;
 import org.generation.italy.mtfuji.model.services.abstractions.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +36,9 @@ public class JpaFoodService implements FoodService {
     }
 
     @Override
-    public GeneralMenu getGeneralMenu() {
+    public GeneralMenuFood getGeneralMenu() {
         List<Food> foods = getAllFood();
-        GeneralMenu gm = new GeneralMenu();
+        GeneralMenuFood gm = new GeneralMenuFood();
         foods.stream().forEach(gm::addFood);
         return gm;
     }

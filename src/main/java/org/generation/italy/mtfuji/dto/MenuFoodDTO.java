@@ -1,12 +1,12 @@
 package org.generation.italy.mtfuji.dto;
 
-import org.generation.italy.mtfuji.model.Food;
-import org.generation.italy.mtfuji.model.Menu;
+
+import org.generation.italy.mtfuji.model.MenuFood;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuDTO {
+public class MenuFoodDTO {
 
     private List<FoodDTO> snacks = new ArrayList<>();
     private List<FoodDTO> sandwiches = new ArrayList<>();
@@ -15,7 +15,7 @@ public class MenuDTO {
     private List<FoodDTO> friedFoods = new ArrayList<>();
     private List<FoodDTO> specialFoods = new ArrayList<>();
 
-    public MenuDTO(Menu m) {
+    public MenuFoodDTO(MenuFood m) {
         m.getSnacks().stream().map(FoodDTO::new).forEach(snacks::add);
         m.getSandwiches().stream().map(FoodDTO::new).forEach(sandwiches::add);
         m.getSalads().stream().map(FoodDTO::new).forEach(salads::add);
