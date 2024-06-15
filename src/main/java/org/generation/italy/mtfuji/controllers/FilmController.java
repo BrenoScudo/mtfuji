@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/films")
+@RequestMapping
 public class FilmController {
 
     private final FilmService filmService;
@@ -26,13 +26,13 @@ public class FilmController {
         this.filmService = filmService;
     }
 
-    @GetMapping
+    @GetMapping("/films")
     public ResponseEntity<List<FilmDTO>> getAllFilms(){
         List<FilmDTO> filmsDto = filmService.getAllFilms().stream().map(FilmDTO::new).collect(Collectors.toList());
         return ResponseEntity.ok(filmsDto);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("film/{id}")
     public ResponseEntity<FilmDTO> getFilmById(@PathVariable("id") long filmId) {
         Optional<Film> oFilm = filmService.getFilmById(filmId);
         if(oFilm.isEmpty()) {
