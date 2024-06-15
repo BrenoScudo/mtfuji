@@ -4,7 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.generation.italy.mtfuji.model.repositories.abstractions.JwtService;
+import org.generation.italy.mtfuji.model.services.abstractions.JwtService;
 import org.generation.italy.mtfuji.model.services.implementations.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -36,7 +36,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             token = authHeader.substring(7);
-            userName = jwtService.extractUserName(token);
+            userName = jwtService.extractEmail(token);
         }
 
         if(userName != null && SecurityContextHolder.getContext().getAuthentication()==null){

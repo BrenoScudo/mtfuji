@@ -36,17 +36,17 @@ public class FoodController {
 
     @GetMapping("/{id}")
     public ResponseEntity<FoodDTO> getFoodById(@PathVariable("id") long foodId) {
-        Optional<Food> ofood = foodService.getFoodById(foodId);
+        Optional<Food> oFood = foodService.getFoodById(foodId);
 
-        return ofood.map(food -> {
+        return oFood.map(food -> {
             FoodDTO dto = new FoodDTO(food);
             return ResponseEntity.ok(dto);
         }).orElseGet(() -> ResponseEntity.notFound().build());
 
-//        if (ofood.isEmpty()) {
+//        if (oFood.isEmpty()) {
 //            return ResponseEntity.notFound().build();
 //        }
-//        Food f = ofood.get();
+//        Food f = oFood.get();
 //        FoodDTO dto = new FoodDTO(f);
 //        return ResponseEntity.ok(dto);
     }

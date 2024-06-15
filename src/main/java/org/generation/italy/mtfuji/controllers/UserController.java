@@ -1,7 +1,7 @@
 package org.generation.italy.mtfuji.controllers;
 
 import org.generation.italy.mtfuji.model.User;
-import org.generation.italy.mtfuji.model.repositories.abstractions.JwtService;
+import org.generation.italy.mtfuji.model.services.abstractions.JwtService;
 import org.generation.italy.mtfuji.model.services.abstractions.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

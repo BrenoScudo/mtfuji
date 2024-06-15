@@ -1,4 +1,4 @@
-package org.generation.italy.mtfuji.model.repositories.abstractions;
+package org.generation.italy.mtfuji.model.services.abstractions;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,7 +11,7 @@ public interface JwtService {
     String generateSecretKey();
     String generateToken(String username);
     Key getKey();
-    String extractUserName(String token);
+    String extractEmail(String token);
     <T> T extractClaim(String token, Function<Claims, T> claimResolver);
     Claims extractAllClaims(String token);
     boolean validateToken(String token, UserDetails userDetails);
