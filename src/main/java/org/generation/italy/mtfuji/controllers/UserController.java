@@ -1,10 +1,13 @@
 package org.generation.italy.mtfuji.controllers;
 
+import org.generation.italy.mtfuji.dto.TokenDTO;
 import org.generation.italy.mtfuji.dto.UserDTO;
 import org.generation.italy.mtfuji.model.User;
 import org.generation.italy.mtfuji.model.services.abstractions.JwtService;
 import org.generation.italy.mtfuji.model.services.abstractions.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -34,14 +37,14 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody UserDTO user){
+    public ResponseEntity<?> login(@RequestBody UserDTO user){
 
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 
         if(authentication.isAuthenticated())
-            return jwtService.generateToken(user.getEmail());
+            return ResponseEntity.ok(new TokenDTO(jwtService.generateToken(user.getEmail())));
         else
-            return "Login Failed";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login Failed");
     }
 }
