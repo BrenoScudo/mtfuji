@@ -1,5 +1,6 @@
 package org.generation.italy.mtfuji.controllers;
 
+import org.generation.italy.mtfuji.dto.UserDTO;
 import org.generation.italy.mtfuji.model.User;
 import org.generation.italy.mtfuji.model.services.abstractions.JwtService;
 import org.generation.italy.mtfuji.model.services.abstractions.UserService;
@@ -28,12 +29,12 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User register(@RequestBody User user) {
-        return service.saveUser(user);
+    public User register(@RequestBody UserDTO user) {
+        return service.saveUser(user.toUser());
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody User user){
+    public String login(@RequestBody UserDTO user){
 
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
