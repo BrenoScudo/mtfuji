@@ -48,7 +48,7 @@ public class Food {
         this.imageName = imageName;
     }
 
-    public Food(String name, float cost, FoodType typeOfFood, boolean complimentary, boolean isVegan, boolean isGlutenFree, String description) {
+    public Food(String name, float cost, FoodType typeOfFood, boolean complimentary, boolean isVegan, boolean isGlutenFree, String description, String imageName) {
     }
 
     public List<Orders> getOrders() {

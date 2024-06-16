@@ -31,7 +31,4 @@ public class BeverageController {
     public List<Beverage> getAllBeverages(){
         return beverageService.getAllBeverage();
     }
-
-
-
 }

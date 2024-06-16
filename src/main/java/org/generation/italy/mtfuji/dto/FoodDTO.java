@@ -67,7 +67,7 @@ public class FoodDTO {
     }
 
     public Food toFood(){
-        return new Food(this.name,this.cost, this.typeOfFood, this.complimentary, this.isVegan, this.isGlutenFree,this.description);
+        return new Food(this.name, this.cost, this.typeOfFood, this.complimentary, this.isVegan, this.isGlutenFree,this.description, this.imageName);
     }
 
     public void setId(long id) {
