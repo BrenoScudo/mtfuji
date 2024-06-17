@@ -15,6 +15,9 @@ public class UserDTO {
     //private List<Booking> reservations = new ArrayList<>();
 
 
+    public UserDTO() {
+    }
+
     public UserDTO(User user) {
         this.id = user.getId();
         this.firstname = user.getFirstname();

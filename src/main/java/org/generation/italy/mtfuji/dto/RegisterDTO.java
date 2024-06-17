@@ -7,6 +7,9 @@ public class RegisterDTO {
     private UserDTO user;
     private String password;
 
+    public RegisterDTO() {
+    }
+
     public RegisterDTO(UserDTO user, String password) {
         this.user = user;
         this.password = password;

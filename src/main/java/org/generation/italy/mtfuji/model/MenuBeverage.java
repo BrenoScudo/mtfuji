@@ -11,8 +11,9 @@ public class MenuBeverage {
     public void addBeverage(Beverage beverage) {
         if (beverage.isAlcoholic()){
             alcoholicDrinks.add(beverage);
+        }else{
+            alcoholicFree.add(beverage);
         }
-        alcoholicFree.add(beverage);
     }
 
     public List<Beverage> getAlcoholicDrinks() {

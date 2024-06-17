@@ -3,6 +3,7 @@ package org.generation.italy.mtfuji.model.services.implementations;
 import org.generation.italy.mtfuji.model.Beverage;
 import org.generation.italy.mtfuji.model.GeneralMenuBeverage;
 import org.generation.italy.mtfuji.model.GeneralMenuFood;
+import org.generation.italy.mtfuji.model.MenuBeverage;
 import org.generation.italy.mtfuji.model.repositories.abstractions.BeverageRepository;
 import org.generation.italy.mtfuji.model.services.abstractions.BeverageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,13 @@ public class JpaBeverageService implements BeverageService {
         GeneralMenuBeverage gm = new GeneralMenuBeverage();
         beverages.stream().forEach(gm::addBeverage);
         return gm;
+    }
+
+    @Override
+    public MenuBeverage getMenuBeverage(){
+        List<Beverage> beverages = getAllBeverage();
+        MenuBeverage mb = new MenuBeverage();
+        beverages.forEach(mb::addBeverage);
+        return  mb;
     }
 }

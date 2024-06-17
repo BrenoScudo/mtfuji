@@ -102,10 +102,6 @@ public class Beverage {
         return alcoholic;
     }
 
-    public void setAlcoholic(boolean alcoholic) {
-        this.alcoholic = alcoholic;
-    }
-
     public String getImageName() {
         return imageName;
     }
