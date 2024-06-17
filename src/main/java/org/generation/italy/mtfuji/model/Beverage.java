@@ -29,22 +29,25 @@ public class Beverage {
     private String description;
     @Column(name = "alcoholic")
     private boolean alcoholic;
+    @Column(name = "image_name")
+    private String imageName;
     @OneToMany(mappedBy = "beverage")
     private List<Orders> orders = new ArrayList<>();
 
     public Beverage() {
     }
 
-    public Beverage(long id, String name, float cost, boolean complimentary, String description, boolean alcoholic) {
+    public Beverage(long id, String name, float cost, boolean complimentary, String description, boolean alcoholic, String imageName) {
         this.id = id;
         this.name = name;
         this.cost = cost;
         this.complimentary = complimentary;
         this.description = description;
         this.alcoholic = alcoholic;
+        this.imageName = imageName;
     }
 
-    public Beverage(String name, String description, boolean complimentary, boolean isAlcoholic, float cost) {
+    public Beverage(String name, String description, boolean complimentary, boolean isAlcoholic, float cost, String imageName) {
     }
 
     public List<Orders> getListOrders() {
@@ -102,5 +105,12 @@ public class Beverage {
     public void setAlcoholic(boolean alcoholic) {
         this.alcoholic = alcoholic;
     }
-    
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
 }
