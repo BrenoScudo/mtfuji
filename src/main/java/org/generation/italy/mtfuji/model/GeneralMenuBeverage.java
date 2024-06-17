@@ -8,8 +8,9 @@ public class GeneralMenuBeverage {
     public void addBeverage(Beverage beverage){
         if (beverage.isAlcoholic()){
             alcoholicMenu.addBeverage(beverage);
+        } else {
+            alcoholicFreeMenu.addBeverage(beverage);
         }
-        alcoholicFreeMenu.addBeverage(beverage);
     }
 
     public MenuBeverage getAlcoholicMenu() {

@@ -20,7 +20,7 @@ public class MenuBeverageController {
         this.beverageService = beverageService;
     }
 
-    @GetMapping("/beverage")
+    @GetMapping
     public ResponseEntity<GeneralMenuBeverageDTO> getGeneralMenuBeverage(){
         GeneralMenuBeverage gm = beverageService.getGeneralMenu();
         GeneralMenuBeverageDTO generalMenuDTO = new GeneralMenuBeverageDTO(gm);

@@ -1,7 +1,6 @@
 package org.generation.italy.mtfuji.dto;
 
 import org.generation.italy.mtfuji.model.Beverage;
-import org.generation.italy.mtfuji.model.Food;
 
 import java.io.Serializable;
 
@@ -13,6 +12,7 @@ public class BeverageDTO implements Serializable {
     private boolean complimentary;
     private String description;
     private boolean isAlcoholic;
+    private String imageName;
 
     public BeverageDTO(Beverage beverage){
         this.id = beverage.getId();
@@ -21,6 +21,7 @@ public class BeverageDTO implements Serializable {
         this.cost = beverage.getCost();
         this.isAlcoholic = beverage.isAlcoholic();
         this.complimentary = beverage.isComplimentary();
+        this.imageName = beverage.getImageName();
     }
 
     public BeverageDTO(){
@@ -51,7 +52,11 @@ public class BeverageDTO implements Serializable {
         return isAlcoholic;
     }
 
+    public String getImageName() {
+        return imageName;
+    }
+
     public Beverage toBeverage(){
-        return new Beverage(this.name, this.description, this.complimentary, this.isAlcoholic, this.cost);
+        return new Beverage(this.name, this.description, this.complimentary, this.isAlcoholic, this.cost, this.imageName);
     }
 }
