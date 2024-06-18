@@ -10,7 +10,8 @@ public class GeneralMenuFood {
         standardMenu.addFood(food);
         if (food.isGlutenFree()){
             celiacMenu.addFood(food);
-        } else if (food.isVegan()) {
+        }
+        if (food.isVegan()) {
             veganMenu.addFood(food);
         }
     }
