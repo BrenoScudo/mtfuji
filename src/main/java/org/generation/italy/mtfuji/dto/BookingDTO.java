@@ -1,23 +1,20 @@
 package org.generation.italy.mtfuji.dto;
 
 import org.generation.italy.mtfuji.model.Booking;
-import org.generation.italy.mtfuji.model.Orders;
 import org.generation.italy.mtfuji.model.Room;
 import org.generation.italy.mtfuji.model.User;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BookingDTO {
 
     private long id;
-    private User user;
+    private long userId;
     private long quantity;
-    private LocalDate check_in;
-    private LocalDate check_out;
-    private LocalDate reservation_date;
-    private Room room;
+    private String check_in;
+    private String check_out;
+    private String reservation_date;
+    private long roomId;
     private boolean paid;
     private float cost;
     private boolean is_promotion;
@@ -28,15 +25,22 @@ public class BookingDTO {
 
     public BookingDTO(Booking booking) {
         this.id = booking.getId();
-        this.user = booking.getUser();
+        this.userId = booking.getUser().getId();
         this.quantity = booking.getQuantity();
-        this.check_in = booking.getCheck_in();
-        this.check_out = booking.getCheck_out();
-        this.reservation_date = booking.getReservation_date();
+        this.check_in = booking.getCheck_in().toString();
+        this.check_out = booking.getCheck_out().toString();
+        this.reservation_date = booking.getReservation_date().toString();
         this.paid = booking.isPaid();
-        this.room = booking.getRoom();
+        this.roomId = booking.getRoom().getId();
         this.cost = booking.getCost();
         this.is_promotion = booking.isIs_promotion();
+    }
+
+    public Booking toBooking() {
+        return new Booking(this.id, new User(this.userId), this.quantity,
+                LocalDate.parse(this.check_in), LocalDate.parse(this.check_out),
+                LocalDate.parse(this.reservation_date), new Room(this.roomId),
+                this.paid, this.cost, this.isIs_promotion());
     }
 
     public long getId() {
@@ -47,12 +51,12 @@ public class BookingDTO {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public long getQuantity() {
@@ -63,36 +67,36 @@ public class BookingDTO {
         this.quantity = quantity;
     }
 
-    public LocalDate getCheck_in() {
+    public String getCheck_in() {
         return check_in;
     }
 
-    public void setCheck_in(LocalDate check_in) {
+    public void setCheck_in(String check_in) {
         this.check_in = check_in;
     }
 
-    public LocalDate getCheck_out() {
+    public String getCheck_out() {
         return check_out;
     }
 
-    public void setCheck_out(LocalDate check_out) {
+    public void setCheck_out(String check_out) {
         this.check_out = check_out;
     }
 
-    public LocalDate getReservation_date() {
+    public String getReservation_date() {
         return reservation_date;
     }
 
-    public void setReservation_date(LocalDate reservation_date) {
+    public void setReservation_date(String reservation_date) {
         this.reservation_date = reservation_date;
     }
 
-    public Room getRoom() {
-        return room;
+    public long getRoomId() {
+        return roomId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRoomId(long roomId) {
+        this.roomId = roomId;
     }
 
     public boolean isPaid() {
