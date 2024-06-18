@@ -43,6 +43,10 @@ public class User {
         this.fidelity_card = fidelity_card;
     }
 
+    public User(long id) {
+        this.id = id;
+    }
+
     public User(long id, String firstname, String lastname, long age, String email, String address, boolean fidelityCard) {
     }
 

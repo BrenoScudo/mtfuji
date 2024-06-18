@@ -34,6 +34,10 @@ public class Room {
         this.luxury = luxury;
     }
 
+    public Room(long id) {
+        this.id = id;
+    }
+
     public List<Prices> getListPrices() {
         return listPrices;
     }

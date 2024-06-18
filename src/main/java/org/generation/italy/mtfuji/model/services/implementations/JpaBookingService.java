@@ -7,8 +7,10 @@ import org.generation.italy.mtfuji.model.services.abstractions.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class JpaBookingService implements BookingService {
@@ -21,75 +23,44 @@ public class JpaBookingService implements BookingService {
     }
 
     @Override
-    public BookingDTO saveBooking(BookingDTO bookingDTO) {
-        Booking booking = mapToEntity(bookingDTO);
+    public Booking saveBooking(Booking booking) {
+        return bookingRepository.save(booking);
+    }
+
+    @Override
+    public List<Booking> findAllBookings() {
+        return new ArrayList<>(bookingRepository.findAll());
+    }
+
+    @Override
+    public Optional<Booking> findBookingById(long id) {
+        return bookingRepository.findById(id);
+    }
+
+    @Override
+    public Booking updateBookingById(long id, Booking booking) {
+        booking = bookingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Prenotazione non trovata"));
+        booking.setUser(booking.getUser());
+        booking.setQuantity(booking.getQuantity());
+        booking.setCheck_in(booking.getCheck_in());
+        booking.setCheck_out(booking.getCheck_out());
+        booking.setReservation_date(booking.getReservation_date());
+        booking.setRoom(booking.getRoom());
+        booking.setPaid(booking.isPaid());
+        booking.setCost(booking.getCost());
+        booking.setIs_promotion(booking.isIs_promotion());
         booking = bookingRepository.save(booking);
-        return mapToDTO(booking);
-    }
-
-    @Override
-    public List<BookingDTO> findAllBookings() {
-        return bookingRepository.findAll().stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public BookingDTO findBookingById(Long id) {
-        Booking booking = bookingRepository.findById(id).orElse(null);
-        return booking != null ? mapToDTO(booking) : null;
-    }
-
-    @Override
-    public BookingDTO updateBookingById(Long id, BookingDTO bookingDTO) {
-        Booking booking = bookingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Prenotazione non trovata"));
-        booking.setUser(bookingDTO.getUser());
-        booking.setQuantity(bookingDTO.getQuantity());
-        booking.setCheck_in(bookingDTO.getCheck_in());
-        booking.setCheck_out(bookingDTO.getCheck_out());
-        booking.setReservation_date(bookingDTO.getReservation_date());
-        booking.setRoom(bookingDTO.getRoom());
-        booking.setPaid(bookingDTO.isPaid());
-        booking.setCost(bookingDTO.getCost());
-        booking.setIs_promotion(bookingDTO.isIs_promotion());
-        booking = bookingRepository.save(booking);
-        return mapToDTO(booking);
-    }
-
-    @Override
-    public void deleteBookingById(Long id) {
-        bookingRepository.deleteById(id);
-    }
-
-    private Booking mapToEntity(BookingDTO bookingDTO) {
-        Booking booking = new Booking();
-        booking.setId(bookingDTO.getId());
-        booking.setUser(bookingDTO.getUser());
-        booking.setQuantity(bookingDTO.getQuantity());
-        booking.setCheck_in(bookingDTO.getCheck_in());
-        booking.setCheck_out(bookingDTO.getCheck_out());
-        booking.setReservation_date(bookingDTO.getReservation_date());
-        booking.setRoom(bookingDTO.getRoom());
-        booking.setPaid(bookingDTO.isPaid());
-        booking.setCost(bookingDTO.getCost());
-        booking.setIs_promotion(bookingDTO.isIs_promotion());
         return booking;
     }
 
-    private BookingDTO mapToDTO(Booking booking) {
-        BookingDTO bookingDTO = new BookingDTO();
-        bookingDTO.setId(booking.getId());
-        bookingDTO.setUser(booking.getUser());
-        bookingDTO.setQuantity(booking.getQuantity());
-        bookingDTO.setCheck_in(booking.getCheck_in());
-        bookingDTO.setCheck_out(booking.getCheck_out());
-        bookingDTO.setReservation_date(booking.getReservation_date());
-        bookingDTO.setRoom(booking.getRoom());
-        bookingDTO.setPaid(booking.isPaid());
-        bookingDTO.setCost(booking.getCost());
-        bookingDTO.setIs_promotion(booking.isIs_promotion());
-        return bookingDTO;
-
+    @Override
+    public void deleteBookingById(long id) {
+        bookingRepository.deleteById(id);
     }
 
+    @Override
+    public List<Booking> findBookingsByRoomIdAndDate(long id, LocalDate reservationDate) {
+
+        return List.of();
+    }
 }
