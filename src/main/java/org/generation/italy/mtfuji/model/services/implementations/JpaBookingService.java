@@ -1,13 +1,15 @@
 package org.generation.italy.mtfuji.model.services.implementations;
 
-import org.generation.italy.mtfuji.dto.BookingDTO;
 import org.generation.italy.mtfuji.model.Booking;
 import org.generation.italy.mtfuji.model.repositories.abstractions.BookingRepository;
 import org.generation.italy.mtfuji.model.services.abstractions.BookingService;
+import org.hibernate.grammars.hql.HqlParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,13 +44,13 @@ public class JpaBookingService implements BookingService {
         booking = bookingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Prenotazione non trovata"));
         booking.setUser(booking.getUser());
         booking.setQuantity(booking.getQuantity());
-        booking.setCheck_in(booking.getCheck_in());
-        booking.setCheck_out(booking.getCheck_out());
-        booking.setReservation_date(booking.getReservation_date());
+        booking.setCheckIn(booking.getCheckIn());
+        booking.setCheckOut(booking.getCheckOut());
+        booking.setReservationDate(booking.getReservationDate());
         booking.setRoom(booking.getRoom());
         booking.setPaid(booking.isPaid());
         booking.setCost(booking.getCost());
-        booking.setIs_promotion(booking.isIs_promotion());
+        booking.setIsPromotion(booking.isIsPromotion());
         booking = bookingRepository.save(booking);
         return booking;
     }
@@ -60,7 +62,8 @@ public class JpaBookingService implements BookingService {
 
     @Override
     public List<Booking> findBookingsByRoomIdAndDate(long id, LocalDate reservationDate) {
-
-        return List.of();
+        LocalDateTime startOfDay = reservationDate.atStartOfDay();
+        LocalDateTime endOfDay = reservationDate.atTime(LocalTime.MAX);
+        return bookingRepository.findByRoomIdAndCheckInBetween(id, startOfDay, endOfDay);
     }
 }

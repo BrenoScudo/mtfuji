@@ -5,6 +5,7 @@ import org.generation.italy.mtfuji.model.Room;
 import org.generation.italy.mtfuji.model.User;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class BookingDTO {
 
@@ -27,18 +28,18 @@ public class BookingDTO {
         this.id = booking.getId();
         this.userId = booking.getUser().getId();
         this.quantity = booking.getQuantity();
-        this.check_in = booking.getCheck_in().toString();
-        this.check_out = booking.getCheck_out().toString();
-        this.reservation_date = booking.getReservation_date().toString();
+        this.check_in = booking.getCheckIn().toString();
+        this.check_out = booking.getCheckOut().toString();
+        this.reservation_date = booking.getReservationDate().toString();
         this.paid = booking.isPaid();
         this.roomId = booking.getRoom().getId();
         this.cost = booking.getCost();
-        this.is_promotion = booking.isIs_promotion();
+        this.is_promotion = booking.isIsPromotion();
     }
 
     public Booking toBooking() {
         return new Booking(this.id, new User(this.userId), this.quantity,
-                LocalDate.parse(this.check_in), LocalDate.parse(this.check_out),
+                LocalDateTime.parse(this.check_in), LocalDateTime.parse(this.check_out),
                 LocalDate.parse(this.reservation_date), new Room(this.roomId),
                 this.paid, this.cost, this.isIs_promotion());
     }
