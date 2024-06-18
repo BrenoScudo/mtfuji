@@ -1,6 +1,7 @@
 package org.generation.italy.mtfuji.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +28,11 @@ public class Booking {
     @Column(name = "quantity")
     private long quantity;
     @Column(name = "check_in", columnDefinition = "timestamp")
-    private LocalDate check_in;
+    private LocalDateTime checkIn;
     @Column(name = "check_out", columnDefinition = "timestamp")
-    private LocalDate check_out;
+    private LocalDateTime checkOut;
     @Column(name = "reservation_date", columnDefinition = "timestamp")
-    private LocalDate reservation_date;
+    private LocalDate reservationDate;
     @ManyToOne
     @JoinColumn(name = "id_room")
     private Room room;
@@ -40,25 +41,25 @@ public class Booking {
     @Column(name = "cost", columnDefinition = "Numeric")
     private float cost;
     @Column(name = "is_promotion")
-    private boolean is_promotion;
+    private boolean isPromotion;
     @OneToMany(mappedBy = "booking")
     private List<Orders> orders = new ArrayList<>();
 
     public Booking() {
     }
 
-    public Booking(long id, User user, long quantity, LocalDate check_in, LocalDate check_out, LocalDate reservation,
-            Room room, boolean paid, float cost, boolean is_promotion) {
+    public Booking(long id, User user, long quantity, LocalDateTime checkIn, LocalDateTime checkOut, LocalDate reservation,
+                   Room room, boolean paid, float cost, boolean isPromotion) {
         this.id = id;
         this.user = user;
         this.quantity = quantity;
-        this.check_in = check_in;
-        this.check_out = check_out;
-        this.reservation_date = reservation;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.reservationDate = reservation;
         this.room = room;
         this.paid = paid;
         this.cost = cost;
-        this.is_promotion = is_promotion;
+        this.isPromotion = isPromotion;
     }
 
     public List<Orders> getOrders() {
@@ -93,28 +94,28 @@ public class Booking {
         this.quantity = quantity;
     }
 
-    public LocalDate getCheck_in() {
-        return check_in;
+    public LocalDateTime getCheckIn() {
+        return checkIn;
     }
 
-    public void setCheck_in(LocalDate check_in) {
-        this.check_in = check_in;
+    public void setCheckIn(LocalDateTime check_in) {
+        this.checkIn = check_in;
     }
 
-    public LocalDate getCheck_out() {
-        return check_out;
+    public LocalDateTime getCheckOut() {
+        return checkOut;
     }
 
-    public void setCheck_out(LocalDate check_out) {
-        this.check_out = check_out;
+    public void setCheckOut(LocalDateTime check_out) {
+        this.checkOut = check_out;
     }
 
-    public LocalDate getReservation_date() {
-        return reservation_date;
+    public LocalDate getReservationDate() {
+        return reservationDate;
     }
 
-    public void setReservation_date(LocalDate reservation) {
-        this.reservation_date = reservation;
+    public void setReservationDate(LocalDate reservation) {
+        this.reservationDate = reservation;
     }
 
     public Room getRoom() {
@@ -141,12 +142,12 @@ public class Booking {
         this.cost = cost;
     }
 
-    public boolean isIs_promotion() {
-        return is_promotion;
+    public boolean isIsPromotion() {
+        return isPromotion;
     }
 
-    public void setIs_promotion(boolean is_promotion) {
-        this.is_promotion = is_promotion;
+    public void setIsPromotion(boolean is_promotion) {
+        this.isPromotion = is_promotion;
     }
     
 
