@@ -24,7 +24,7 @@ public class JpaBeverageService implements BeverageService {
 
     @Override
     public List<Beverage> getAllBeverage() {
-        return beverageRepository.findAll();
+        return beverageRepository.findAllByOrderByName();
     }
 
     @Override
