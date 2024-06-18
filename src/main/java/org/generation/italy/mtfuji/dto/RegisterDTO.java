@@ -17,7 +17,7 @@ public class RegisterDTO {
 
     public User toUser(){
         return new User(user.getId(), user.getFirstname(),user.getLastname(),user.getAge(),
-                user.getEmail(),user.getAddress(), user.isFidelity_card());
+                user.getEmail(),user.getAddress(), user.isFidelity_card(), this.password);
     }
 
     public UserDTO getUser() {

@@ -47,7 +47,10 @@ public class User {
         this.id = id;
     }
 
-    public User(long id, String firstname, String lastname, long age, String email, String address, boolean fidelityCard) {
+    public User(long id, String firstname, String lastname, long age, String email,
+                String address, boolean fidelityCard, String password) {
+        this(firstname,lastname,age,email,address,fidelityCard);
+        this.password = password;
     }
 
     public List<Booking> getReservations() {
