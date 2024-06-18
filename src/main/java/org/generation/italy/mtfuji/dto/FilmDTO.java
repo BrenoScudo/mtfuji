@@ -8,12 +8,14 @@ public class FilmDTO {
     private String title;
     private String genre;
     private long duration;
+    private String imageName;
 
     public FilmDTO(Film film) {
         this.id = film.getId();
         this.title = film.getTitle();
         this.genre = film.getGenre();
         this.duration = film.getDuration();
+        this.imageName = film.getImageName();
     }
 
     public long getId() {
@@ -30,5 +32,9 @@ public class FilmDTO {
 
     public long getDuration() {
         return duration;
+    }
+
+    public String getImageName() {
+        return imageName;
     }
 }

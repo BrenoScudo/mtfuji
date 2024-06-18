@@ -21,7 +21,7 @@ public class JpaKaraokeService implements KaraokeService {
 
     @Override
     public List<Karaoke> getAllKaraoke() {
-        return karaokeRepository.findAll();
+        return karaokeRepository.findAllByOrderByTitle();
     }
 
     @Override
