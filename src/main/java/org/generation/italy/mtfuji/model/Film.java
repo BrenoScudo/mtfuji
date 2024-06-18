@@ -16,15 +16,18 @@ public class Film {
     private String genre;
     @Column(name = "duration")
     private long duration;
+    @Column(name = "image_name")
+    private String imageName;
 
     public Film() {
     }
 
-    public Film(long id, String title, String genre, long duration) {
+    public Film(long id, String title, String genre, long duration, String imageName) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.duration = duration;
+        this.imageName = imageName;
     }
 
     public long getId() {
@@ -59,5 +62,7 @@ public class Film {
         this.duration = duration;
     }
 
-
+    public String getImageName() {
+        return imageName;
+    }
 }

@@ -22,7 +22,7 @@ public class JpaFilmService implements FilmService {
 
     @Override
     public List<Film> getAllFilms() {
-        return filmRepository.findAll();
+        return filmRepository.findAllByOrderByTitle();
     }
 
     @Override
