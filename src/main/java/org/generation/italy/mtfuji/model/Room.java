@@ -1,5 +1,6 @@
 package org.generation.italy.mtfuji.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class Room {
     private List<Booking> reservations = new ArrayList<>();
     @OneToMany(mappedBy = "room")
     private List<Prices> listPrices = new ArrayList<>();
+    @Column(name = "cost")
+    private BigDecimal cost;
 
     public Room() {
     }
@@ -54,6 +57,7 @@ public class Room {
         this.reservations = reservations;
     }
 
+
     public long getId() {
         return id;
     }
@@ -78,5 +82,12 @@ public class Room {
     public void setLuxury(boolean luxury) {
         this.luxury = luxury;
     }
-    
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
+    }
 }
