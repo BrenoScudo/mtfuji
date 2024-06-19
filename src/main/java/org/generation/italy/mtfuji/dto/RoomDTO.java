@@ -9,6 +9,7 @@ public class RoomDTO {
     private String name;
     private Integer maxOccupancy;
     private boolean luxury;
+    private String imageName;
     private BigDecimal cost;
 //    private List<Booking> reservations = new ArrayList<>();
 //    private List<Prices> listPrices = new ArrayList<>();
@@ -20,6 +21,7 @@ public class RoomDTO {
         this.maxOccupancy = room.getMax_occupancy();
         this.luxury = room.isLuxury();
         this.cost = room.getCost();
+        this.imageName = room.getImageName();
     }
 
     public long getId() {
@@ -36,6 +38,14 @@ public class RoomDTO {
 
     public boolean isLuxury() {
         return luxury;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public BigDecimal getCost() {

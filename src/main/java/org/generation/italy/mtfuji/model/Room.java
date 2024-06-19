@@ -20,6 +20,8 @@ public class Room {
     private Integer max_occupancy;
     @Column(name = "luxury")
     private boolean luxury;
+    @Column(name = "image_name")
+    private String imageName;
     @OneToMany(mappedBy = "room")
     private List<Booking> reservations = new ArrayList<>();
     @OneToMany(mappedBy = "room")
@@ -30,11 +32,12 @@ public class Room {
     public Room() {
     }
 
-    public Room(long id, String name, Integer max_occupancy, boolean luxury) {
+    public Room(long id, String name, Integer max_occupancy, boolean luxury, String imageName) {
         this.id = id;
         this.name = name;
         this.max_occupancy = max_occupancy;
         this.luxury = luxury;
+        this.imageName = imageName;
     }
 
     public Room(long id) {
@@ -81,6 +84,14 @@ public class Room {
     }
     public void setLuxury(boolean luxury) {
         this.luxury = luxury;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public BigDecimal getCost() {
