@@ -10,5 +10,11 @@ import java.util.List;
 public interface KaraokeRepository extends JpaRepository<Karaoke,Long> {
     List<Karaoke> findByTitleContainingIgnoreCase(String title);
 
+    List<Karaoke> findBySingerContainingIgnoreCase(String title);
+
+    List<Karaoke> findByTitleAndSingerContainingIgnoreCase(String title, String singer);
+
     List<Karaoke> findAllByOrderByTitle();
+
+    List<Karaoke> findAllByOrderBySinger();
 }

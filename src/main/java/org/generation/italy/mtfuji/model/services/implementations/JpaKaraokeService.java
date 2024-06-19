@@ -21,7 +21,7 @@ public class JpaKaraokeService implements KaraokeService {
 
     @Override
     public List<Karaoke> getAllKaraoke() {
-        return karaokeRepository.findAllByOrderByTitle();
+        return karaokeRepository.findAllByOrderBySinger();
     }
 
     @Override
@@ -32,5 +32,15 @@ public class JpaKaraokeService implements KaraokeService {
     @Override
     public List<Karaoke> findByTitleLike(String titleLike) {
         return karaokeRepository.findByTitleContainingIgnoreCase(titleLike);
+    }
+
+    @Override
+    public List<Karaoke> findBySingerLike(String singerLike) {
+        return karaokeRepository.findBySingerContainingIgnoreCase(singerLike);
+    }
+
+    @Override
+    public List<Karaoke> findByTitleAndSingerLike(String title, String singer) {
+        return karaokeRepository.findByTitleAndSingerContainingIgnoreCase(title, singer);
     }
 }

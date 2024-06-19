@@ -22,7 +22,7 @@ public class JpaFoodService implements FoodService {
 
     @Override
     public List<Food> getAllFood() {
-        return foodRepository.findAll();
+        return foodRepository.findAllByOrderByName();
     }
 
     @Override
