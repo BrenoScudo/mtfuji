@@ -12,4 +12,8 @@ public interface KaraokeService {
     Optional<Karaoke> getKaraokeById(long id);
 
     List<Karaoke> findByTitleLike(String titleLike);
+
+    List<Karaoke> findBySingerLike(String AuthorLike);
+
+    List<Karaoke> findByTitleAndSingerLike(String title, String singer);
 }

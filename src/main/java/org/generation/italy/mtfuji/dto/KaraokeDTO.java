@@ -9,6 +9,9 @@ public class KaraokeDTO {
     private String genre;
     private String singer;
 
+    public KaraokeDTO() {
+    }
+
     public KaraokeDTO(Karaoke karaoke) {
         this.id = karaoke.getId();
         this.title = karaoke.getTitle();
@@ -30,5 +33,25 @@ public class KaraokeDTO {
 
     public String getSinger() {
         return singer;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setSinger(String singer) {
+        this.singer = singer;
+    }
+
+    public Karaoke toEntity(){
+        return new Karaoke(this.id, this.title, this.genre, this.singer);
     }
 }
