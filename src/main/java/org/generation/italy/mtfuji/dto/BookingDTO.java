@@ -11,13 +11,13 @@ public class BookingDTO {
     private long id;
     private long userId;
     private long quantity;
-    private String check_in;
-    private String check_out;
-    private String reservation_date;
+    private String checkIn;
+    private String checkOut;
+    private String reservationDate;
     private long roomId;
     private boolean paid;
     private float cost;
-    private boolean is_promotion;
+    private boolean isPromotion;
 
 
     public BookingDTO() {
@@ -27,20 +27,20 @@ public class BookingDTO {
         this.id = booking.getId();
         this.userId = booking.getUser().getId();
         this.quantity = booking.getQuantity();
-        this.check_in = booking.getCheck_in().toString();
-        this.check_out = booking.getCheck_out().toString();
-        this.reservation_date = booking.getReservation_date().toString();
+        this.checkIn = booking.getCheck_in().toString();
+        this.checkOut = booking.getCheck_out().toString();
+        this.reservationDate = booking.getReservation_date().toString();
         this.paid = booking.isPaid();
         this.roomId = booking.getRoom().getId();
         this.cost = booking.getCost();
-        this.is_promotion = booking.isIs_promotion();
+        this.isPromotion = booking.isIs_promotion();
     }
 
     public Booking toBooking() {
         return new Booking(this.id, new User(this.userId), this.quantity,
-                LocalDate.parse(this.check_in), LocalDate.parse(this.check_out),
-                LocalDate.parse(this.reservation_date), new Room(this.roomId),
-                this.paid, this.cost, this.isIs_promotion());
+                LocalDate.parse(this.checkIn), LocalDate.parse(this.checkOut),
+                LocalDate.parse(this.reservationDate), new Room(this.roomId),
+                this.paid, this.cost, this.isPromotion());
     }
 
     public long getId() {
@@ -67,28 +67,28 @@ public class BookingDTO {
         this.quantity = quantity;
     }
 
-    public String getCheck_in() {
-        return check_in;
+    public String getCheckIn() {
+        return checkIn;
     }
 
-    public void setCheck_in(String check_in) {
-        this.check_in = check_in;
+    public void setCheckIn(String checkIn) {
+        this.checkIn = checkIn;
     }
 
-    public String getCheck_out() {
-        return check_out;
+    public String getCheckOut() {
+        return checkOut;
     }
 
-    public void setCheck_out(String check_out) {
-        this.check_out = check_out;
+    public void setCheckOut(String checkOut) {
+        this.checkOut = checkOut;
     }
 
-    public String getReservation_date() {
-        return reservation_date;
+    public String getReservationDate() {
+        return reservationDate;
     }
 
-    public void setReservation_date(String reservation_date) {
-        this.reservation_date = reservation_date;
+    public void setReservationDate(String reservationDate) {
+        this.reservationDate = reservationDate;
     }
 
     public long getRoomId() {
@@ -115,11 +115,11 @@ public class BookingDTO {
         this.cost = cost;
     }
 
-    public boolean isIs_promotion() {
-        return is_promotion;
+    public boolean isPromotion() {
+        return isPromotion;
     }
 
-    public void setIs_promotion(boolean is_promotion) {
-        this.is_promotion = is_promotion;
+    public void setPromotion(boolean promotion) {
+        this.isPromotion = promotion;
     }
 }
