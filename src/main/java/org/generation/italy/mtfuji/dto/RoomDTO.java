@@ -2,22 +2,24 @@ package org.generation.italy.mtfuji.dto;
 
 import org.generation.italy.mtfuji.model.Room;
 
+import java.math.BigDecimal;
+
 public class RoomDTO {
     private long id;
     private String name;
     private Integer maxOccupancy;
     private boolean luxury;
-    private String imageName;
+    private BigDecimal cost;
 //    private List<Booking> reservations = new ArrayList<>();
 //    private List<Prices> listPrices = new ArrayList<>();
 
 
-    public RoomDTO(Room room, String imageName) {
+    public RoomDTO(Room room) {
         this.id = room.getId();
         this.name = room.getName();
-        this.maxOccupancy = room.getMaxOccupancy();
+        this.maxOccupancy = room.getMax_occupancy();
         this.luxury = room.isLuxury();
-        this.imageName = imageName;
+        this.cost = room.getCost();
     }
 
     public long getId() {
@@ -36,7 +38,7 @@ public class RoomDTO {
         return luxury;
     }
 
-    public String getImageName() {
-        return imageName;
+    public BigDecimal getCost() {
+        return cost;
     }
 }

@@ -1,6 +1,7 @@
 package org.generation.italy.mtfuji.controllers;
 
 import org.generation.italy.mtfuji.dto.BookingDTO;
+import org.generation.italy.mtfuji.dto.RoomDTO;
 import org.generation.italy.mtfuji.model.Booking;
 import org.generation.italy.mtfuji.model.Room;
 import org.generation.italy.mtfuji.model.services.abstractions.BookingService;
@@ -29,8 +30,10 @@ public class RoomController {
     }
 
     @GetMapping
-    public List<Room> getAllRooms(){
-        return roomService.getAllRooms();
+    public ResponseEntity<List<RoomDTO>> getAllRooms(){
+        var rooms = roomService.getAllRooms();
+        List<RoomDTO> dtos = rooms.stream().map(RoomDTO::new).toList();
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/{id}/{date}/bookings")

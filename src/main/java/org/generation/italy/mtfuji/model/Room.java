@@ -1,5 +1,6 @@
 package org.generation.italy.mtfuji.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,25 +17,24 @@ public class Room {
     @Column(name = "name")
     private String name;
     @Column(name = "max_occupancy")
-    private Integer maxOccupancy;
+    private Integer max_occupancy;
     @Column(name = "luxury")
     private boolean luxury;
-    @Column(name = "image_name")
-    private String imageName;
     @OneToMany(mappedBy = "room")
     private List<Booking> reservations = new ArrayList<>();
     @OneToMany(mappedBy = "room")
     private List<Prices> listPrices = new ArrayList<>();
+    @Column(name = "cost")
+    private BigDecimal cost;
 
     public Room() {
     }
 
-    public Room(long id, String name, Integer maxOccupancy, boolean luxury, String imageName) {
+    public Room(long id, String name, Integer max_occupancy, boolean luxury) {
         this.id = id;
         this.name = name;
-        this.maxOccupancy = maxOccupancy;
+        this.max_occupancy = max_occupancy;
         this.luxury = luxury;
-        this.imageName = imageName;
     }
 
     public Room(long id) {
@@ -57,6 +57,7 @@ public class Room {
         this.reservations = reservations;
     }
 
+
     public long getId() {
         return id;
     }
@@ -69,11 +70,11 @@ public class Room {
     public void setName(String name) {
         this.name = name;
     }
-    public Integer getMaxOccupancy() {
-        return maxOccupancy;
+    public Integer getMax_occupancy() {
+        return max_occupancy;
     }
-    public void setMaxOccupancy(Integer maxOccupancy) {
-        this.maxOccupancy = maxOccupancy;
+    public void setMax_occupancy(Integer max_occupancy) {
+        this.max_occupancy = max_occupancy;
     }
     public boolean isLuxury() {
         return luxury;
@@ -81,10 +82,12 @@ public class Room {
     public void setLuxury(boolean luxury) {
         this.luxury = luxury;
     }
-    public String getImageName() {
-        return imageName;
+
+    public BigDecimal getCost() {
+        return cost;
     }
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
     }
 }
