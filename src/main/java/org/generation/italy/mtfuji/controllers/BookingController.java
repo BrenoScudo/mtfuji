@@ -2,10 +2,12 @@ package org.generation.italy.mtfuji.controllers;
 
 import org.generation.italy.mtfuji.dto.BookingDTO;
 import org.generation.italy.mtfuji.model.Booking;
+import org.generation.italy.mtfuji.model.UserPrincipal;
 import org.generation.italy.mtfuji.model.services.abstractions.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +25,9 @@ public class BookingController {
     }
 
     @PostMapping
-    public ResponseEntity<BookingDTO> createBooking(@RequestBody BookingDTO bookingDTO) {
+    public ResponseEntity<BookingDTO> createBooking(@AuthenticationPrincipal UserPrincipal principal, @RequestBody BookingDTO bookingDTO) {
+        long userId = principal.getUser().getId();
+        bookingDTO.setUserId(userId);
         Booking booking = bookingDTO.toBooking();
         Booking createdBooking = bookingService.saveBooking(booking);
         BookingDTO dto = new BookingDTO(createdBooking);
